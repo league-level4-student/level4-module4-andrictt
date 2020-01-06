@@ -23,12 +23,59 @@ public class EncapsulateTheData {
 	//2. Create a new JUnit Test case and write tests to verify that 
 	//   the member variables' getters and setters are working
 	
-	int itemsReceived; //must not be negative. All negative arguments get set to 0.
-	float degreesTurned; //must be locked between 0.0 and 360.0 inclusive.
-	String nomenclature = " "; //must not be set to a blank string. Blank Strings get set to a space
-	Object memberObj;  //must not be a String.  If it is a String, set it equal to a new Object();
-	
+	private int itemsReceived; //must not be negative. All negative arguments get set to 0.
+	int getItemsRecieved() {
+		return itemsReceived;
+	}
+	void setItemsRecieved(int x) {
+		if(x < 0) {
+			itemsReceived = 0;
+		}
+		else {
+			itemsReceived = x;
+		}
+	}
+	private float degreesTurned; //must be locked between 0.0 and 360.0 inclusive.
+	float getDegreesTurned() {
+		return degreesTurned;
+	}
+	void setDegreesTurned(float x) {
+		if(x < 0) {
+			degreesTurned = 0;
+		}
+		else if(x > 360) {
+			degreesTurned = 360;
+		}
+		else {
+			degreesTurned = x;
+		}
+	}
+	private String nomenclature = " "; //must not be set to a blank string. Blank Strings get set to a space
+	String getNomenclature() {
+		return nomenclature;
+	}
+	void setNomenclature(String x) {
+		if(x.length() == 0) {
+			nomenclature = " ";
+		}
+		else {
+			nomenclature = x;
+		}
+	}
+	private Object memberObj;  //must not be a String.  If it is a String, set it equal to a new Object();
+	Object getMemberObj() {
+		return memberObj;
+	}
+	void setMemberObj(Object x) {
+		if(x instanceof String ){
+			memberObj = new Object();
+		}
+		else {
+			memberObj = x;
+		}
+	}
 	public static void main(String[] args) {
 		
 	}
 }
+
