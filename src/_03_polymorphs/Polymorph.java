@@ -1,13 +1,18 @@
 package _03_polymorphs;
 
 import java.awt.Graphics;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.event.ActionListener;
 
-public abstract class Polymorph {
+import javax.swing.Timer;
+
+public abstract class Polymorph{
     int x;
     int y;
     int width;
     int height;
-    
+    int hey = 0;
     public Polymorph(int x, int y, int width, int height){
    	 this.x = x;
    	 this.y = y;
@@ -21,6 +26,17 @@ public abstract class Polymorph {
     		if(this.x> 200) {
     			this.x =0;
     		}
+    	}
+    	if(this instanceof CircleMorph) {
+    		hey++;
+    		this.x = (int) Math.round(Math.sin(hey * Math.PI/180)*100);
+    		this.y = (int) Math.round(Math.cos(hey * Math.PI/180)*100);
+    	}
+    	if(this instanceof MouseMorph) {
+    		Point p = MouseInfo.getPointerInfo().getLocation();
+    		this.x = p.x;
+    		this.y = p.y;
+    		
     	}
     }
     public int getX() {
